@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Steady Kit — faceless South African wellness self-help tools. Mood check-ins, coping skills, micro-tasks. Not therapy.">
+  <meta name="description" content="Steady Kit — faceless South African wellness self-help tools for adults 18+. Mood notes, coping prompts, micro-tasks. Not therapy or diagnosis.">
   <meta name="robots" content="index,follow">
   <title>Steady Kit | Wellness tools (not therapy)</title>
   <link rel="stylesheet" href="css/styles.css">
@@ -12,16 +12,16 @@
 <body>
   <div class="crisis-banner" role="note">
     If you are in crisis or thinking of suicide or self-harm, contact local emergency services,
-    <strong>SADAG 0800 567 567</strong> (24h), or
+    <strong>SADAG 0800 567 567</strong> (24h · <a href="https://www.sadag.org" target="_blank" rel="noopener noreferrer">sadag.org</a>), or
     <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">findahelpline.com</a>.
-    Steady Kit is <strong>not</strong> a crisis service.
+    Steady Kit is <strong>not</strong> a crisis service or HPCSA practice.
     <a href="crisis.html">Crisis help →</a>
   </div>
 
   <header class="site-header">
     <div class="logo-mark" aria-hidden="true">SK</div>
     <h1>Steady Kit</h1>
-    <p class="tagline">Practical wellness tools for adults who feel down — motivation, coping skills, and tiny next steps. Faceless. Local-first. Not therapy.</p>
+    <p class="tagline">Practical wellness tools for adults who feel down — motivation, coping skills, and tiny next steps. Faceless. Local-first. Not therapy or counselling.</p>
     <div class="badge-row">
       <span class="badge">Adults 18+</span>
       <span class="badge">South Africa–aware</span>
@@ -30,10 +30,14 @@
     </div>
   </header>
 
-  <aside class="disclaimer-box" role="note">
-    <strong>Disclaimer:</strong> Steady Kit is <em>not</em> therapy, counselling, or medical/psychological diagnosis or treatment.
-    It is not a substitute for a licensed professional. These are wellness self-help tools only.
-    No clinical claims, diagnoses, or guaranteed outcomes. Do not use if you are under 18. We do not collect child data.
+    <aside class="disclaimer-box" role="note">
+    <strong>Disclaimer:</strong> Steady Kit is a general wellness and motivation toolkit for adults. It does not provide psychotherapy, counselling, clinical assessment, diagnosis, or treatment. It is not a substitute for a registered psychologist, psychiatrist, counsellor, GP, or emergency care. Nothing in the app is medical or mental-health advice. Do not use it to diagnose yourself or others, or to replace prescribed care.
+    <br><br>
+    <strong>Age:</strong> 18+ only. We do not target children.
+    <br><br>
+    <strong>Crisis:</strong> If you are in emotional distress, feeling unsafe, or thinking about suicide or self-harm, leave the app and get help immediately. In South Africa contact SADAG’s 24-hour Suicide Crisis Helpline 0800 567 567 (see sadag.org) or <a href="https://findahelpline.com" rel="noopener">findahelpline.com</a>. For a life-threatening emergency call local emergency services.
+    <br><br>
+    <strong>POPIA:</strong> Keep journal/mood notes private. No results are guaranteed.
   </aside>
 
   <nav class="modules" aria-label="Tools">
@@ -62,6 +66,10 @@
           <button type="button" class="btn btn-secondary" id="clear-mood">Clear history</button>
         </div>
       </form>
+      <div id="mood-crisis-nudge" class="gate-crisis" hidden style="margin-top:1rem">
+        <p><strong>Feeling very low?</strong> These tools are not crisis care. If you feel unsafe or are thinking of harming yourself, get help now:</p>
+        <p><a href="tel:0800567567">SADAG 0800 567 567</a> · <a href="https://www.sadag.org" target="_blank" rel="noopener noreferrer">sadag.org</a> · <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">findahelpline.com</a> · <a href="crisis.html">Crisis page</a></p>
+      </div>
       <div class="chart-wrap" id="mood-chart" aria-live="polite"></div>
       <ul class="history-list" id="mood-history"></ul>
     </section>
@@ -196,14 +204,34 @@
   </main>
 
   <footer class="site-footer">
-    <p><strong>Steady Kit</strong> · Wellness self-help tools for adults (18+) · Not therapy · Not a crisis service</p>
+    <p><strong>Steady Kit</strong> · General wellness &amp; motivation toolkit for adults (18+) · Not therapy · Not counselling · Not diagnosis · Not a clinic or HPCSA practice</p>
     <p>
-      Crisis: <a href="crisis.html">local help page</a> ·
-      SADAG <a href="tel:0800567567">0800 567 567</a> ·
-      <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">findahelpline.com</a>
+      Crisis: <a href="crisis.html">help page</a> ·
+      SADAG <a href="tel:0800567567">0800 567 567</a> (<a href="https://www.sadag.org" target="_blank" rel="noopener noreferrer">sadag.org</a>) ·
+      <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">findahelpline.com</a> ·
+      emergency services if life-threatening
     </p>
-    <p style="margin-top:0.75rem">© Steady Kit. Faceless brand. COI-safe. Data stays in your browser.</p>
+    <p style="margin-top:0.75rem">POPIA: notes stay in your browser; you are responsible for what you enter. No results guaranteed. © Steady Kit. Faceless. COI-safe.</p>
   </footer>
+
+  <!-- First-run crisis / age gate -->
+  <div id="first-run-gate" class="gate-overlay" hidden>
+    <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+      <h2 id="gate-title">Before you continue</h2>
+      <p><strong>18+ only.</strong> Steady Kit does not target children.</p>
+      <p>Self-help wellness tools only — not therapy, not counselling, not diagnosis, and not medical or mental-health advice. Steady Kit / the seller is not a clinic or HPCSA practice.</p>
+      <div class="gate-crisis">
+        <p><strong>If you’re in crisis or thinking of harming yourself, stop and get help now:</strong></p>
+        <p class="helpline"><a href="tel:0800567567">SADAG 0800 567 567</a> (24h) · <a href="https://www.sadag.org" target="_blank" rel="noopener noreferrer">sadag.org</a></p>
+        <p><a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">findahelpline.com</a> · or local emergency services</p>
+        <p><a class="btn btn-warm" href="crisis.html">Open crisis page</a></p>
+      </div>
+      <p style="font-size:0.9rem;color:var(--muted)">I confirm I am 18+, I understand this is not therapy or clinical care, and I know where to find crisis help.</p>
+      <div class="btn-row">
+        <button type="button" class="btn" id="gate-accept">I understand — continue</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/app.js"></script>
 </body>

@@ -23,3 +23,8 @@ Days when mood is low, energy is flat, or thoughts feel sticky. The goal is **on
 ## Privacy tip
 
 Paper worksheets can stay offline. The web journal stays in your browser only — avoid shared computers if notes are sensitive.
+
+
+## Legal fence (summary)
+
+Steady Kit is not therapy, counselling, diagnosis, or medical/mental-health advice. 18+ only. Not a clinic or HPCSA practice. Crisis: SADAG 0800 567 567 / sadag.org / findahelpline.com / emergency services. No results guaranteed. See `DISCLAIMER.md`.

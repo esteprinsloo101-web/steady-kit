@@ -160,6 +160,10 @@
       history.push({ mood: selectedMood, note: note, ts: Date.now() });
       if (history.length > 100) history.splice(0, history.length - 100);
       saveMoodHistory(history);
+      if (selectedMood <= 2) {
+        var nudge = document.getElementById("mood-crisis-nudge");
+        if (nudge) nudge.hidden = false;
+      }
       document.getElementById("mood-note").value = "";
       selectedMood = null;
       renderMoodUI();
@@ -443,8 +447,28 @@
     }
   }
 
+  /* ---------- First-run crisis / age gate ---------- */
+  const GATE_KEY = "steadykit_gate_v1";
+
+  function initGate() {
+    const gate = document.getElementById("first-run-gate");
+    const accept = document.getElementById("gate-accept");
+    if (!gate || !accept) return;
+    try {
+      if (localStorage.getItem(GATE_KEY) === "1") return;
+    } catch (_) {}
+    gate.hidden = false;
+    accept.addEventListener("click", function () {
+      try {
+        localStorage.setItem(GATE_KEY, "1");
+      } catch (_) {}
+      gate.hidden = true;
+    });
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
+    initGate();
     initMood();
     initDeck();
     initTasks();
