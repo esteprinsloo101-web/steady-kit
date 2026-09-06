@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Steady Kit — faceless South African wellness self-help tools. Mood check-ins, coping skills, micro-tasks. Not therapy.">
+  <meta name="robots" content="index,follow">
+  <title>Steady Kit | Wellness tools (not therapy)</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle fill='%232d6a5a' cx='32' cy='32' r='30'/%3E%3Ctext x='32' y='40' text-anchor='middle' fill='white' font-size='22' font-family='sans-serif'%3ESK%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="crisis-banner" role="note">
+    If you are in crisis or thinking of suicide or self-harm, contact local emergency services,
+    <strong>SADAG 0800 567 567</strong> (24h), or
+    <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">findahelpline.com</a>.
+    Steady Kit is <strong>not</strong> a crisis service.
+    <a href="crisis.html">Crisis help →</a>
+  </div>
+
+  <header class="site-header">
+    <div class="logo-mark" aria-hidden="true">SK</div>
+    <h1>Steady Kit</h1>
+    <p class="tagline">Practical wellness tools for adults who feel down — motivation, coping skills, and tiny next steps. Faceless. Local-first. Not therapy.</p>
+    <div class="badge-row">
+      <span class="badge">Adults 18+</span>
+      <span class="badge">South Africa–aware</span>
+      <span class="badge">Data stays in your browser</span>
+      <span class="badge">Not counselling</span>
+    </div>
+  </header>
+
+  <aside class="disclaimer-box" role="note">
+    <strong>Disclaimer:</strong> Steady Kit is <em>not</em> therapy, counselling, or medical/psychological diagnosis or treatment.
+    It is not a substitute for a licensed professional. These are wellness self-help tools only.
+    No clinical claims, diagnoses, or guaranteed outcomes. Do not use if you are under 18. We do not collect child data.
+  </aside>
+
+  <nav class="modules" aria-label="Tools">
+    <a href="#mood">Mood</a>
+    <a href="#coping">Coping deck</a>
+    <a href="#tasks">Micro-tasks</a>
+    <a href="#music">Music</a>
+    <a href="#voice">Voice</a>
+    <a href="#journal">Journal</a>
+    <a href="#pack">Get the pack</a>
+    <a href="crisis.html">Crisis</a>
+  </nav>
+
+  <main>
+    <!-- 1. Mood check-in -->
+    <section class="card" id="mood">
+      <h2>Mood check-in</h2>
+      <p class="lead">Rate how you feel (1–5), add an optional note. History stays on this device only.</p>
+      <form id="mood-form">
+        <label>How are you right now?</label>
+        <div class="mood-scale" id="mood-scale" role="group" aria-label="Mood from 1 to 5"></div>
+        <label for="mood-note">Optional note</label>
+        <input type="text" id="mood-note" maxlength="280" placeholder="One sentence is enough…">
+        <div class="btn-row">
+          <button type="submit" class="btn">Save check-in</button>
+          <button type="button" class="btn btn-secondary" id="clear-mood">Clear history</button>
+        </div>
+      </form>
+      <div class="chart-wrap" id="mood-chart" aria-live="polite"></div>
+      <ul class="history-list" id="mood-history"></ul>
+    </section>
+
+    <!-- 2. Coping deck -->
+    <section class="card" id="coping">
+      <h2>Coping deck</h2>
+      <p class="lead">Short skills you can use when emotions feel loud. Practice tools — not treatment.</p>
+      <div class="deck-tabs" role="tablist">
+        <button type="button" data-deck="ground" class="active">5-4-3-2-1 grounding</button>
+        <button type="button" data-deck="breath">Box breathing</button>
+        <button type="button" data-deck="urge">Urge surfing</button>
+        <button type="button" data-deck="talk">Kind self-talk</button>
+      </div>
+
+      <div class="deck-panel active" id="deck-ground">
+        <p>Look around and name, slowly:</p>
+        <ol class="sense-list">
+          <li><strong>5</strong> things you can <em>see</em></li>
+          <li><strong>4</strong> things you can <em>touch</em></li>
+          <li><strong>3</strong> things you can <em>hear</em></li>
+          <li><strong>2</strong> things you can <em>smell</em> (or like the smell of)</li>
+          <li><strong>1</strong> thing you can <em>taste</em> (or recall tasting)</li>
+        </ol>
+        <p style="color:var(--muted);font-size:0.92rem">No rush. If a sense is hard, skip it. You are orienting to the present — that is enough.</p>
+      </div>
+
+      <div class="deck-panel" id="deck-breath">
+        <p>Box breathing: inhale 4 · hold 4 · exhale 4 · hold 4. Four rounds. Stop anytime.</p>
+        <div class="breath-circle" id="breath-circle" aria-hidden="true"></div>
+        <div class="timer-display" id="breath-timer">0:00</div>
+        <div class="breath-phase" id="breath-phase">Ready when you are</div>
+        <div class="btn-row" style="justify-content:center">
+          <button type="button" class="btn" id="start-breath">Start 4 rounds</button>
+          <button type="button" class="btn btn-secondary" id="stop-breath">Stop</button>
+        </div>
+      </div>
+
+      <div class="deck-panel" id="deck-urge">
+        <h3 style="margin-top:0;font-size:1.05rem">Urge surfing (one-pager)</h3>
+        <p>Urges often rise, peak, and fall — like a wave. You do not have to act on the peak.</p>
+        <ol class="sense-list">
+          <li><strong>Notice</strong> — name the urge without judging: “There is an urge to…”</li>
+          <li><strong>Locate</strong> — where in the body? Tight chest? Restless hands?</li>
+          <li><strong>Breathe</strong> — slow breaths while you watch the wave, not fight it.</li>
+          <li><strong>Ride</strong> — wait 10–20 minutes if safe to do so; intensity often softens.</li>
+          <li><strong>Choose</strong> — after the peak, pick a tiny caring action (water, stretch, message).</li>
+        </ol>
+        <p style="color:var(--muted);font-size:0.92rem">If the urge involves harm to yourself or others, stop this exercise and use crisis help immediately.</p>
+        <p><a href="crisis.html">Go to crisis resources →</a></p>
+      </div>
+
+      <div class="deck-panel" id="deck-talk">
+        <div class="self-talk-card" id="self-talk-text" aria-live="polite"></div>
+        <div class="btn-row" style="justify-content:center">
+          <button type="button" class="btn btn-secondary" id="next-talk">Another card</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Micro-tasks -->
+    <section class="card" id="tasks">
+      <h2>Micro-tasks</h2>
+      <p class="lead">When energy is low, pick <strong>one</strong> tiny task. Behavioural activation in small doses — not a productivity challenge.</p>
+      <div class="btn-row">
+        <button type="button" class="btn" id="pick-task">Pick one for me</button>
+      </div>
+      <p id="picked-task" style="min-height:1.5em;font-weight:600;color:var(--accent-dark)" aria-live="polite"></p>
+      <div class="task-grid" id="task-grid"></div>
+    </section>
+
+    <!-- 4. Music -->
+    <section class="card" id="music">
+      <h2>Music by mood</h2>
+      <p class="lead">Curated search links to public playlists. Opens YouTube or Spotify in a new tab — we do not host audio.</p>
+      <div class="music-grid">
+        <div class="music-card">
+          <h3>Calm</h3>
+          <p>Soft instrumentals, quiet focus, wind-down.</p>
+          <a href="https://www.youtube.com/results?search_query=calm+instrumental+playlist" target="_blank" rel="noopener noreferrer">YouTube search</a>
+          <a href="https://open.spotify.com/search/calm%20instrumental%20playlist" target="_blank" rel="noopener noreferrer">Spotify search</a>
+        </div>
+        <div class="music-card">
+          <h3>Lift</h3>
+          <p>Gentle upbeat energy when you need a nudge.</p>
+          <a href="https://www.youtube.com/results?search_query=uplifting+feel+good+playlist" target="_blank" rel="noopener noreferrer">YouTube search</a>
+          <a href="https://open.spotify.com/search/uplifting%20feel%20good%20playlist" target="_blank" rel="noopener noreferrer">Spotify search</a>
+        </div>
+        <div class="music-card">
+          <h3>Focus</h3>
+          <p>Steady background for one small task.</p>
+          <a href="https://www.youtube.com/results?search_query=focus%20deep%20work%20playlist" target="_blank" rel="noopener noreferrer">YouTube search</a>
+          <a href="https://open.spotify.com/search/focus%20deep%20work%20playlist" target="_blank" rel="noopener noreferrer">Spotify search</a>
+        </div>
+      </div>
+      <p class="third-party-note"><strong>Third-party notice:</strong> YouTube and Spotify are external services with their own terms, ads, and accounts. Steady Kit only provides search links. Availability may vary by region.</p>
+    </section>
+
+    <!-- 5. Voice motivation -->
+    <section class="card" id="voice">
+      <h2>Voice encouragement</h2>
+      <p class="lead">Tap a line — your browser reads it aloud (Web Speech API). Short scripts only. Not a therapist voice.</p>
+      <div class="voice-scripts" id="voice-scripts"></div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" id="stop-voice">Stop speaking</button>
+      </div>
+    </section>
+
+    <!-- 6. Journal -->
+    <section class="card" id="journal">
+      <h2>Private journal</h2>
+      <p class="lead">Write what is on your mind. Stored in <code>localStorage</code> on this device only — not uploaded.</p>
+      <form id="journal-form">
+        <label for="journal-text">Entry</label>
+        <textarea id="journal-text" maxlength="2000" placeholder="No grammar rules. No audience. Just you."></textarea>
+        <div class="btn-row">
+          <button type="submit" class="btn">Save entry</button>
+          <button type="button" class="btn btn-secondary" id="clear-journal">Clear journal</button>
+        </div>
+      </form>
+      <ul class="history-list" id="journal-list"></ul>
+    </section>
+
+    <!-- 7. Pack CTA -->
+    <section class="card cta-card" id="pack">
+      <h2>Get the Coping Tools Pack</h2>
+      <p class="lead">Printable worksheets, adult guide, and setup notes — same safety fence as the free tools. Soft download for when you want the pack offline.</p>
+      <p class="price">R149</p>
+      <a class="btn" href="https://gumroad.com/" target="_blank" rel="noopener noreferrer" id="gumroad-cta">Get the pack on Gumroad (placeholder)</a>
+      <p style="margin:1rem 0 0;font-size:0.85rem;opacity:0.9">Listing queued for publish after daily create limit reset. See <code>GUMROAD_LISTING.md</code> in the project folder.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Steady Kit</strong> · Wellness self-help tools for adults (18+) · Not therapy · Not a crisis service</p>
+    <p>
+      Crisis: <a href="crisis.html">local help page</a> ·
+      SADAG <a href="tel:0800567567">0800 567 567</a> ·
+      <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">findahelpline.com</a>
+    </p>
+    <p style="margin-top:0.75rem">© Steady Kit. Faceless brand. COI-safe. Data stays in your browser.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
