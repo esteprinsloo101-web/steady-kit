@@ -2,6 +2,7 @@ Status: HOLD — publish AFTER Gumroad daily create-limit reset (queue with AGM 
 Channel: Gumroad  
 Brand: **Steady Kit** (own faceless wellness brand — NOT Plain Desk)  
 CTA: YOUR_GUMROAD_URL  
+Web demo (free): https://esteprinsloo101-web.github.io/steady-kit/  
 Price: **R149**  
 Pack zip: `/workspace/steady-kit/SteadyKit_Coping_Tools_Pack.zip`  
 Legal: `/workspace/ops/legal/steady-kit-disclaimer.md`  
