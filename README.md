@@ -35,3 +35,5 @@ See `pack/` and `SteadyKit_Coping_Tools_Pack.zip`. Listing copy in `GUMROAD_LIST
 ## Brand
 
 Steady Kit · faceless · COI-safe
+
+> **2026-09-25:** paid pack files (`pack/`, zip) removed from this public repo/site. Buyers get them via Gumroad only.
